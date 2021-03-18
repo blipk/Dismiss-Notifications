@@ -3,7 +3,7 @@
 Easily dismiss notification pop ups in gnome-shell.
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)]()
-[![Website](https://img.shields.io/badge/Homepage-blue)](https://github.com/blipk/Customised-Isolated-Workspaces)
+[![Website](https://img.shields.io/badge/Homepage-blue)](https://github.com/blipk/Dismiss-Notifications)
 
 ### Usage
 Right click a notification pop up to hide it.
@@ -31,8 +31,8 @@ This has only been thoroughly tested on Gnome Shell versions 3.22, 3.30 and 3.36
 ### Licence
 
 ```
-This file is part of the Customised Workspaces Gnome Extension for Gnome 3
-Copyright (C) 2020 A.D. - http://kronosoul.xyz
+This file is part of the Notification Dismiss Gnome Extension for Gnome 3
+Copyright (C) 2021 A.D. - http://kronosoul.xyz
 ```
 
 ```

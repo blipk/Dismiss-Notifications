@@ -1,7 +1,7 @@
 /*
  * Notification Dismiss extension for Gnome 3
  * This file is part of the Notification Dismiss Gnome Extension for Gnome 3
- * Copyright (C) 2020 A.D. - http://kronosoul.xyz
+ * Copyright (C) 2021 A.D. - http://kronosoul.xyz
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

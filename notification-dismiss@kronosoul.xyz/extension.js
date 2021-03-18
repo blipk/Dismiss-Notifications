@@ -41,7 +41,7 @@ const Main = imports.ui.main;
 const ExtensionSystem = imports.ui.extensionSystem;
 const { extensionUtils } = imports.misc;
 const { Meta, GLib, Gio, Shell, St } = imports.gi;
-const { messageList } = imports.ui;
+const { messageList, messageTray } = imports.ui;
 
 // Internal imports
 const Me = imports.misc.extensionUtils.getCurrentExtension();
@@ -63,15 +63,31 @@ function enable() {
     if (!Me.injections['messageList.Message._init'])
         Me.injections['messageList.Message._init'] = messageList.Message.prototype._init;
 
+    if (dev._debug_) {
+        if (!Me.injections['messageList.Message.close'])
+        Me.injections['messageList.Message.close'] = messageList.Message.prototype.close;
+
+        messageList.Message.prototype.close = function() {
+            dev.log((new Error()).stack)
+            // TODO
+            // Follow these stack traces for every notification exit condition
+            // Then figure out a better way to implement this that maintains the notification state
+        };
+    }
+    
+    // Action
+    if (!Me.injections['messageList.Message._init'])
+    Me.injections['messageList.Message._init'] = messageList.Message.prototype._init;
+
     messageList.Message.prototype._init = function(title, body) {
         Me.injections['messageList.Message._init'].call(this, title, body); // Call parent
         this.connect('button-press-event', (self, event) => {
+            dev.log("BBBB")
             if (event.get_button() != 3) return;    // Don't action on right click, wait for the release below
         })
         this.connect('button-release-event', (self, event) => {
-            if (self.rcmenu) return;
             if (event.get_button() == 3)    // Close on right click
-                this.destroy()
+                this.hide()
         })
     };
     } catch(e) { dev.log(scopeName+'.'+arguments.callee.name, e); }
@@ -79,7 +95,10 @@ function enable() {
 function disable() {
     try {
     dev.log(scopeName+'.'+arguments.callee.name, "!!~|");
-    if (Me.injections['messageList.Message._init']) messageList.Message.prototype._init = Me.injections['messageList.Message._init'];
+    if (Me.injections['messageList.Message._init']) 
+        messageList.Message.prototype._init = Me.injections['messageList.Message._init'];
+    if (Me.injections['messageList.Message.close']) 
+        messageList.Message.prototype.close = Me.injections['messageTray.NotificationBanner.close'];
 
     dev.log(scopeName+'.'+arguments.callee.name, "~!!|"+'\r\n');
     } catch(e) { dev.log(scopeName+'.'+arguments.callee.name, e); }
