@@ -1,0 +1,14 @@
+{   "uuid": "notification-dismiss@kronosoul.xyz",
+
+    "name": "Dismiss Notifications on Right Click",
+    "url": "https://github.com/blipk/notification-dismiss",
+    "description": "Simple extension that removes notification popups when they are right clicked.",
+    "original-author": "admin@kronosoul.xyz",
+    "version": 1,
+
+    "extension-id": "notification-dismiss",
+    "application-id": "org.kronosoul.notification-dismiss",
+    "gettext-domain": "worksets",
+    "shell-version": ["3.00", "3.10", "3.12", "3.14", "3.16", "3.18", "3.20", "3.22",
+                      "3.24", "3.26", "3.28", "3.30", "3.32", "3.34", "3.36", "3.38"]
+}
