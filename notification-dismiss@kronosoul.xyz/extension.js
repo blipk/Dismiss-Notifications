@@ -98,7 +98,7 @@ function disable() {
     if (Me.injections['messageList.Message._init']) 
         messageList.Message.prototype._init = Me.injections['messageList.Message._init'];
     if (Me.injections['messageList.Message.close']) 
-        messageList.Message.prototype.close = Me.injections['messageTray.NotificationBanner.close'];
+        messageList.Message.prototype.close = Me.injections['messageList.Message.close'];
 
     dev.log(scopeName+'.'+arguments.callee.name, "~!!|"+'\r\n');
     } catch(e) { dev.log(scopeName+'.'+arguments.callee.name, e); }
